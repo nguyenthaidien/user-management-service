@@ -1,0 +1,40 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://10.82.14.80:8080/realms/DCMS-Realm/protocol/openid-connect/certs
+
+#Eureka client        
+eureka:
+  client:
+    enabled: true
+    register-with-eureka: true # Disable registration with Eureka
+    fetch-registry: true # Disable fetching the registry
+    serviceUrl:
+      defaultZone: http://host.docker.internal:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    # Application name as registered in Eureka
+    # Ensure this matches the service name in the Docker Compose file or Kubernetes deployment  
+    appname: user-service
+    prefer-ip-address: true # Ensures service registers with IP address; set consistently across all services
+    # Interval (in seconds) at which this instance renews its lease with Eureka server
+    lease-renewal-interval-in-seconds: 20
+    # Duration (in seconds) after which the instance is expired if no renewal is received
+    lease-expiration-duration-in-seconds: 60                       
+
+logging:
+    level:
+      org:
+        springframework:
+          security:
+            web: DEBUG
+          hibernate: ERROR
+    file:
+      name: logs/application-debug.log
+      max-size: 2MB
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
