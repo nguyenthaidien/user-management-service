@@ -1,0 +1,28 @@
+# This is the configuration file for the User Management Service
+server:
+  port: 9091
+#Eureka client        
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    appname: user-management-service
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 20
+    lease-expiration-duration-in-seconds: 60
+logging:
+    level:
+      org:
+        springframework:
+          security:
+            web: DEBUG
+          hibernate: ERROR
+    file:
+      name: logs/application-debug.log
+      max-size: 2MB
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
