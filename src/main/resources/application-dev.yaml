@@ -1,8 +1,0 @@
-spring:
-  profiles:
-    active: dev
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://10.82.14.80:8080/realms/DCMS-Realm/protocol/openid-connect/certs
