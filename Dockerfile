@@ -7,7 +7,7 @@ FROM eclipse-temurin:17
 
 # install
 # label for the image
-LABEL Description="user-service" Version="0.0.1"
+LABEL Description="mock-service" Version="0.0.1"
 
 # the version of the archive
 ARG VERSION=0.0.1
@@ -17,7 +17,7 @@ ARG VERSION=0.0.1
 VOLUME /tmp
 
 # Add the service as app.jar
-ADD target/user-service-${VERSION}-SNAPSHOT.jar app.jar
+ADD target/mock-service-${VERSION}-SNAPSHOT.jar app.jar
 
 # touch the archive for timestamp
 RUN sh -c 'touch /app.jar'

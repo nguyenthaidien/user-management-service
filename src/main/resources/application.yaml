@@ -1,10 +1,10 @@
 server:
-  port: 9194
+  port: 9100
 spring:
   profiles:
     active: dev
   application:
-    name: user-service
+    name: mock-service
   config:
       import: optional:configserver:http://10.82.14.80:8888
 
