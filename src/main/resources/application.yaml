@@ -15,3 +15,22 @@ management:
         include: refresh, health, info
 welcome:
   message: Development
+logging:
+    level:
+      org:
+        springframework:
+          security:
+            web: DEBUG
+            oauth2: DEBUG
+          hibernate: ERROR
+          web: 
+            client: 
+              RestTemplate: WARN
+          
+            
+    file:
+      name: logs/application-debug.log
+      max-size: 2MB
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"  
